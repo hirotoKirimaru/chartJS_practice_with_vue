@@ -4,38 +4,38 @@
 　 <button @click="logout"> ログアウト </button>
 
    <h3>円グラフを描画する</h3>
-   <PieChart class="pieChart" :data="pieChartData" :options="options"></PieChart>
+   <CustomPie :data="customPieData" :options="options"></CustomPie>
 　 </div>
 　</template>
 　<script>
-  import { Pie } from 'vue-chartjs';
-  
-  var PieChart = {
-      extends: Pie,
-      mounted(){
-          this.renderChart({
-            // ラベル
-            labels: ["天領", "薩摩", "長州", "土佐"],
-            // データ詳細
-            datasets: [{
-              label: '藩と人口',
-              data: [13740000, 9072000, 7150000, 6148000],
-              backgroundColor: [
-                 'rgba(255, 100, 130, 0.2)',
-                 'rgba(100, 130, 255, 0.2)',
-                 'rgba(130, 255, 100, 0.2)',
-                 'rgba(230, 210, 85, 0.2)'
-              ]
-          }]
-          });
-    }
-  }
+  import { CustomPie } from './CustomPie.vue'
 
 　export default {
 　 name: 'editor',
    props: ['user'],
    components: {
-    PieChart
+    CustomPie
+   },
+   data: function(){
+       customPieData:{
+        labels: ['未実施', '仕掛中', '障害発生', '完了'],
+        datasets: [{
+          label: 'テスト進捗状況',
+          data: [350, 100, 5, 20],
+          backgroundColor: [
+            'rgba(255, 100, 130, 0.2)',
+            'rgba(100, 130, 255, 0.2)',
+            'rgba(130, 255, 100, 0.2)',
+            'rgba(230, 210, 85, 0.2)'
+          ]
+        }]
+      }
+   },
+   options: {
+      title: {
+        display: true,
+        text: 'テスト進捗状況'
+      }
    },
    methods: {
      logout: function(){
@@ -44,10 +44,3 @@
    }
 　}
 　</script>
-　<style lang="scss">
-  .pieChart{
-      width: 80vw;
-      height: 80vh;
-  }
-
-　</style>
