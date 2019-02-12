@@ -8,7 +8,7 @@
 　 </div>
 　</template>
 　<script>
-  import { CustomPie } from './CustomPie.vue'
+  import CustomPie from './CustomPie.vue'
 
 　export default {
 　 name: 'editor',
@@ -17,6 +17,7 @@
     CustomPie
    },
    data: function(){
+     return{
        customPieData:{
         labels: ['未実施', '仕掛中', '障害発生', '完了'],
         datasets: [{
@@ -30,6 +31,7 @@
           ]
         }]
       }
+     }
    },
    options: {
       title: {
