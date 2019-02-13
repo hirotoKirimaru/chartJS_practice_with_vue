@@ -8,7 +8,7 @@
 　 </div>
 　</template>
 　<script>
-  import CustomPie from './CustomPie.vue'
+  import CustomPie from '@/template/CustomPie.vue'
 
 　export default {
 　 name: 'editor',
