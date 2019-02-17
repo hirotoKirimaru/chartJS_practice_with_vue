@@ -4,7 +4,7 @@
 　 <button @click="logout"> ログアウト </button>
 
    <h3>円グラフを描画する</h3>
-   <CustomPie :data="customPieData" :options="options"></CustomPie>
+   <CustomPie :data="customPieData" :options="customPieOptions"></CustomPie>
 　 </div>
 　</template>
 　<script>
@@ -30,14 +30,21 @@
             'rgba(230, 210, 85, 0.2)'
           ]
         }]
+        },
+        customPieOptions: {
+          cutoutPercentage: 0,
+          rotation: -0.5 * Math.PI,
+          circumference: 2 * Math.PI,
+          'animation.animateRotate': true,
+          'animation.animateScale': false
+        }
       }
-     }
    },
    options: {
-      title: {
+     title: {
         display: true,
         text: 'テスト進捗状況'
-      }
+     }
    },
    methods: {
      logout: function(){
