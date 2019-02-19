@@ -10,9 +10,8 @@
        <input type="text" value="値">
      </div>
      <div v-for="(label, index) in customPieData.labels" :key="label"> 
-       <input type="text" v-bind:value="label">
-
-       <input type="text" v-bind:value="customPieData.datasets[0].data[index]">
+       <input type="text" v-bind:value="label" v-on:input="customPieData.labels[index] = $event.target.value">
+       <input type="text" v-bind:value="customPieData.datasets[0].data[index]" v-on:input="customPieData.datasets[0].data[index] = $event.target.value">
      </div>
    </div>
 
