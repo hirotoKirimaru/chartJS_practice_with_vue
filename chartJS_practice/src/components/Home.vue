@@ -1,6 +1,8 @@
 <template>
 　 <div id="home">
 　 <h1>{{ msg }}</h1>
+   <input v-model="message">
+   <p>Message is: {{ message }}</p>
 　 <button @click="googleLogin">Google アカウントでログイン </button>
 　 </div>
 　</template>
@@ -9,7 +11,8 @@
 　 name: 'home',
 　 data () {
 　 return {
-　 msg: 'Welcome to MyMarkdown'
+　 msg: 'Welcome to MyMarkdown',
+   message: '123'
 　 }
 },
 　 methods: {
