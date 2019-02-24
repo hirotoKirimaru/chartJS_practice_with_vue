@@ -1,29 +1,16 @@
 　<template>
-　 <div class="editor">
-　 <h1> エディター画面 </h1>
-　 <button @click="logout"> ログアウト </button>
+　 <h1> グラフ表示 </h1>
+   <div>
+     <p>カラム名:</p>
 
-   <table>
-    <thead>
-      <tr>
-        <th v-for="key in columns"
-          @click="sortBy(key)"
-          :class="{ active: sortKey == key }">
-          {{ key | capitalize }}
-          <span class="arrow" :class="sortOrders[key] > 0 ? 'asc' : 'dsc'">
-          </span>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="entry in filteredData">
-        <td v-for="key in columns">
-          {{entry[key]}}
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
+     <div> 
+       <input type="text" value="カラム名">
+       <input type="text" value="値">
+     </div>
+     <div v-for="(label, index) in customPieData.labels" :key="label"> 
+       <input type="text" v-model="customPieData.labels[index]">
+       <input type="text" v-model="customPieData.datasets[0].data[index]">
+     </div>
 
    <h3>円グラフを描画する</h3>
    <CustomPie :data="customPieData" :options="customPieOptions"></CustomPie>
@@ -43,7 +30,6 @@
        customPieData:{
         labels: ['未実施', '仕掛中', '障害発生', '完了'],
         datasets: [{
-          label: 'テスト進捗状況',
           data: [350, 100, 5, 20],
           backgroundColor: [
             'rgba(255, 100, 130, 0.2)',
@@ -59,7 +45,7 @@
           circumference: 2 * Math.PI,
           'animation.animateRotate': true,
           'animation.animateScale': false
-        }
+        },
       }
    },
    options: {
